@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MbilseAccount | OAuth Success</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f4f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .card {
+            background: white;
+            padding: 40px 50px;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            text-align: center;
+            max-width: 500px;
+        }
+        .card h1 { color: #2c974b; }
+        .card p { color: #333; font-size: 16px; }
+        .btn-close {
+            margin-top: 20px;
+            padding: 10px 28px;
+            background: #2c974b;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .btn-close:hover { background: #1e7e34; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>✅ 验证成功</h1>
+        <p><strong id="github-user"></strong> 已成功绑定。</p>
+        <p>你现在可以安全地关闭此页面，返回 Nerimity 继续使用。</p>
+        <button class="btn-close" onclick="window.close()">关闭页面</button>
+        <p style="font-size: 12px; color: #888; margin-top: 20px;">
+            如果关闭按钮无效，请手动关闭浏览器标签页。
+        </p>
+    </div>
+
+    <script>
+        // 从 URL 查询参数中读取用户名
+        const params = new URLSearchParams(window.location.search);
+        const user = params.get('user') || '未知用户';
+        document.getElementById('github-user').textContent = user;
+    </script>
+</body>
+</html>
